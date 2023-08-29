@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Input, Button, Text, RadioGroup, Radio, VStack } from '@chakra-ui/react';
+import { Box, Input, Select, Button, Text } from '@chakra-ui/react';
 
 interface MockPercentiles {
   male: number[];
@@ -8,7 +8,7 @@ interface MockPercentiles {
 
 const BmiPercentileCalculator: React.FC = () => {
   const [ageYears, setAgeYears] = useState<number | null>(null);
-  const [gender, setGender] = useState<'male' | 'female'>('male'); // Provide type annotation
+  const [gender, setGender] = useState<'male' | 'female'>('male');
   const [heightCm, setHeightCm] = useState<number | null>(null);
   const [weightKg, setWeightKg] = useState<number | null>(null);
   const [bmiPercentile, setBmiPercentile] = useState<number | null>(null);
@@ -44,7 +44,32 @@ const BmiPercentileCalculator: React.FC = () => {
 
   return (
     <Box p={4}>
-      {/* Input fields and calculations */}
+      <Input
+        type="number"
+        placeholder="Age (years)"
+        value={ageYears || ''}
+        onChange={(e) => setAgeYears(parseFloat(e.target.value))}
+      />
+      <Select value={gender} onChange={(e) => setGender(e.target.value as 'male' | 'female')}>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </Select>
+      <Input
+        type="number"
+        placeholder="Height (cm)"
+        value={heightCm || ''}
+        onChange={(e) => setHeightCm(parseFloat(e.target.value))}
+      />
+      <Input
+        type="number"
+        placeholder="Weight (kg)"
+        value={weightKg || ''}
+        onChange={(e) => setWeightKg(parseFloat(e.target.value))}
+      />
+      <Button onClick={calculateBmiPercentile}>Calculate BMI Percentile</Button>
+      {bmiPercentile !== null && (
+        <Text mt={3}>BMI Percentile: {bmiPercentile}%</Text>
+      )}
     </Box>
   );
 };

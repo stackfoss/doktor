@@ -11,16 +11,21 @@ import {
 } from '@chakra-ui/react';
 
 const CalorieCalculator = () => {
-  const [age, setAge] = useState<number | string>('');
+  const [age, setAge] = useState<string>('');
   const [gender, setGender] = useState<'male' | 'female'>('male');
-  const [weight, setWeight] = useState<number | string>('');
-  const [height, setHeight] = useState<number | string>('');
+  const [weight, setWeight] = useState<string>('');
+  const [height, setHeight] = useState<string>('');
   const [activityLevel, setActivityLevel] = useState<
     'sedentary' | 'lightlyActive' | 'moderatelyActive' | 'veryActive'
   >('sedentary');
   const [calories, setCalories] = useState<number | null>(null);
 
   const calculateCalories = () => {
+    // Convert input values to numbers
+    const parsedAge = parseFloat(age);
+    const parsedWeight = parseFloat(weight);
+    const parsedHeight = parseFloat(height);
+
     // Constants for calculating calories
     const maleCalorieConstant = 66.5;
     const femaleCalorieConstant = 655.1;
@@ -33,15 +38,15 @@ const CalorieCalculator = () => {
     if (gender === 'male') {
       bmr =
         maleCalorieConstant +
-        weightConstant * parseFloat(weight.toString()) +
-        heightConstant * parseFloat(height.toString()) -
-        ageConstant * parseFloat(age.toString());
+        weightConstant * parsedWeight +
+        heightConstant * parsedHeight -
+        ageConstant * parsedAge;
     } else {
       bmr =
         femaleCalorieConstant +
-        weightConstant * parseFloat(weight.toString()) +
-        heightConstant * parseFloat(height.toString()) -
-        ageConstant * parseFloat(age.toString());
+        weightConstant * parsedWeight +
+        heightConstant * parsedHeight -
+        ageConstant * parsedAge;
     }
 
     // Calculate total calories based on activity level
@@ -74,19 +79,45 @@ const CalorieCalculator = () => {
       </FormControl>
       <FormControl mb={3}>
         <FormLabel>Gender</FormLabel>
-        <Select value={gender} onChange={(e) => setGender(e.target.value as 'male' | 'female')}>
+        <Select
+          value={gender}
+          onChange={(e) => setGender(e.target.value as 'male' | 'female')}
+        >
           <option value="male">Male</option>
           <option value="female">Female</option>
         </Select>
       </FormControl>
-      {/* Other form controls ... */}
-      <Button onClick={calculateCalories}>
-        Calculate Calories
-      </Button>
+      <FormControl mb={3}>
+        <FormLabel>Weight (kg)</FormLabel>
+        <Input
+          type="number"
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+        />
+      </FormControl>
+      <FormControl mb={3}>
+        <FormLabel>Height (cm)</FormLabel>
+        <Input
+          type="number"
+          value={height}
+          onChange={(e) => setHeight(e.target.value)}
+        />
+      </FormControl>
+      <FormControl mb={3}>
+        <FormLabel>Activity Level</FormLabel>
+        <Select
+          value={activityLevel}
+          onChange={(e) => setActivityLevel(e.target.value as any)}
+        >
+          <option value="sedentary">Sedentary</option>
+          <option value="lightlyActive">Lightly Active</option>
+          <option value="moderatelyActive">Moderately Active</option>
+          <option value="veryActive">Very Active</option>
+        </Select>
+      </FormControl>
+      <Button onClick={calculateCalories}>Calculate Calories</Button>
       {calories !== null && (
-        <Text mt={3}>
-          Estimated daily calories: {calories}
-        </Text>
+        <Text mt={3}>Estimated daily calories: {calories}</Text>
       )}
     </Box>
   );
