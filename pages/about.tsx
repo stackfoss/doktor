@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Container, VStack, Text, Heading, Box, Avatar, Button } from '@chakra-ui/react';
+import { Container, VStack, Text, Heading, Box, Avatar, Button, Link } from '@chakra-ui/react';
 import { FaCalendarAlt } from 'react-icons/fa';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
@@ -9,7 +9,7 @@ const AboutPage: React.FC = () => {
   const router = useRouter();
 
   const handleBookAppointment = () => {
-    router.push('/contact'); // Navigate to the contact page
+    router.push('/#BookAppointment'); // Navigate to the contact page
   };
 
   return (
@@ -42,7 +42,9 @@ const AboutPage: React.FC = () => {
               alignSelf="center"
               onClick={handleBookAppointment}
             >
-              Book Appointment
+              <Link href='/#BookAppointment'>
+                Book Appointment
+              </Link>
             </Button>
           </Box>
         </VStack>

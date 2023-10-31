@@ -76,7 +76,7 @@ const Services = () => {
         <Flex justify="center" mt={8}>
           <Button
             as={Link}
-            href="/contact" // Link to the contact page
+            href="/#BookAppointment" 
             colorScheme="teal"
             size="lg"
           >

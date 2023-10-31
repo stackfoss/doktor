@@ -22,11 +22,14 @@ import QuitSmokingSavingsCalculator from './calculators/QuitSmokingSavingsCalcul
 
 const MedicalCalculators: NextPage = () => {
   return (
-    <Box p={6}>
+    <Box p={6} backgroundColor="#f7f7f7">
       <Container maxW="container.md" mt={16} mb={16}>
-        <Heading as="h2" size="xl" mb={4} textAlign="center">
+        <Heading as="h2" size="xl" mb={4} textAlign="center" color="teal.500">
           Medical Calculators
         </Heading>
+        <Text textAlign="center" color="gray.600" fontSize="lg" mb={6}>
+          Explore a range of medical calculators for health and wellness.
+        </Text>
         <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={6}>
           <CalculatorCard title="BMI Calculator" icon={<FaCalculator />} component={<BmiCalculator />} />
           <CalculatorCard title="Calorie Calculator" icon={<IoMdFlower />} component={<CalorieCalculator />} />
@@ -54,11 +57,11 @@ interface CalculatorCardProps {
 }
 
 const CalculatorCard: React.FC<CalculatorCardProps> = ({ title, icon, component }) => (
-  <Box border="1px solid #E2E8F0" borderRadius="md" p={4} bg="white">
-    <Flex alignItems="center" justifyContent="center" fontSize="2xl" mb={3}>
+  <Box border="1px solid #E2E8F0" borderRadius="md" p={4} bg="teal.500" boxShadow="md">
+    <Flex alignItems="center" justifyContent="center" fontSize="2xl" mb={3} color="white">
       {icon}
     </Flex>
-    <Text fontWeight="semibold" textAlign="center" mb={2}>
+    <Text fontWeight="semibold" textAlign="center" mb={2} color="white">
       {title}
     </Text>
     {component}

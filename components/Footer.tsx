@@ -33,7 +33,7 @@ const Footer = () => {
   ];
 
   return (
-    <Box bg={colorMode === 'light' ? 'gray.100' : 'gray.800'} py={8}>
+    <Box bg={colorMode === 'light' ? 'gray.100' : 'gray.800'} py={8} >
       <Flex direction="column" align="center">
         <Heading size="lg" color={colorMode === 'light' ? 'gray.700' : 'white'}>
           Dr. Smith&rsquo;s Medical Center
@@ -42,7 +42,7 @@ const Footer = () => {
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
           <Link href="/services">Services</Link>
-          <Link href="/contact">Contact</Link>
+          
         </Stack>
         <Stack direction="row" spacing={4} mt={6}>
           {links.map((link) => (

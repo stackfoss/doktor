@@ -29,9 +29,12 @@ const Calculator: NextPage = () => {
         <Box as="main" p={6}>
           <NavBar />
           <Container maxW="container.md" mt={16} mb={16}>
-            <Heading as="h2" size="xl" mb={4} textAlign="center">
+            <Heading as="h2" size="xl" mb={4} textAlign="center" color="teal.400">
               Medical Calculators
             </Heading>
+            <Text fontSize="lg" textAlign="center" mb={4}>
+              Explore a variety of medical and health calculators.
+            </Text>
             <Divider mb={8} />
             <Grid templateColumns="repeat(auto-fill, minmax(300px, 1fr))" gap={6}>
               <CalculatorCard title="BMI Calculator" icon={<FaCalculator />} component={<BmiCalculator />} />
@@ -63,7 +66,7 @@ interface CalculatorCardProps {
 }
 
 const CalculatorCard: React.FC<CalculatorCardProps> = ({ title, icon, component }) => (
-  <Box boxShadow="md" p={4} borderRadius="md" bg="white">
+  <Box boxShadow="md" p={4} borderRadius="md" bg="teal">
     <Flex alignItems="center" justifyContent="center" fontSize="2xl" mb={3}>
       {icon}
     </Flex>

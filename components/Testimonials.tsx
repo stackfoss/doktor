@@ -31,7 +31,7 @@ const testimonials: TestimonialAttributes[] = [
     name: 'Sophia Nguyen',
     position: 'Dermatologist',
     company: 'SkinCare Clinic',
-    image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 
+    image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     content: `As a dermatologist, I'm proud to be associated with this clinic. The advanced techniques and personalized treatments offered here have made a significant impact on our patients' skin health and confidence. It's truly rewarding to see the positive transformations.`
   },
   {
@@ -56,15 +56,23 @@ const Testimonials = () => {
   const blurBgColor = useColorModeValue('green.200', 'gray.600');
 
   return (
-    <Container maxW="5xl" p={{ base: 5, md: 10 }}>
-      <Flex justify="center" mb={8}>
-        <chakra.h3 fontSize="3xl" fontWeight="bold" mb={3} textAlign="center">
-          What Our Patients Say
-        </chakra.h3>
+    <Container maxW="5xl" p={6}>
+      <Flex justify="center" mb={8} direction="column" alignItems="center">
+        <chakra.h2 fontSize="3xl" fontWeight="bold" mb={2} color="teal.500">
+          Patient Testimonials
+        </chakra.h2>
+        <chakra.p
+          color="gray.500"
+          fontSize="lg"
+          textAlign="center"
+          mt={3}
+        >
+          Discover what our patients have to say about their experience with our dedicated healthcare team.
+        </chakra.p>
       </Flex>
-      <SimpleGrid columns={{ base: 1, md: 2 }} placeItems="center" spacing={1} mt={12} mb={4}>
+      <SimpleGrid columns={{ base: 1, md: 2 }} placeItems="center" spacing={8} mt={12} mb={8}>
         {testimonials.map((obj, index) => (
-          <Stack key={index} direction="column" mb={5} spacing={0} alignItems="baseline">
+          <Stack key={index} direction="column" mb={5} spacing={0} alignItems="center">
             <Stack
               maxW="345px"
               spacing={5}
@@ -102,23 +110,24 @@ const Testimonials = () => {
                   borderRadius: '5px'
                 }}
               >
-                <chakra.p position="relative">{obj.content}</chakra.p>
+                <chakra.p position="relative" fontSize="lg">{obj.content}</chakra.p>
               </Box>
             </Stack>
-            <Stack spacing={1} p={2} justify="flex-end" alignItems="center">
+            <Stack spacing={1} p={2} justify="center" alignItems="center">
               <Avatar
-                size="lg"
-                showBorder={true}
-                borderColor="green.400"
+                size="xl"
                 name={obj.name}
                 src={obj.image}
               />
               <Box textAlign="center">
-                <Text fontWeight="bold" fontSize="md">
+                <Text fontWeight="bold" fontSize="xl">
                   {obj.name}
                 </Text>
-                <Text fontWeight="medium" fontSize="xs" color="gray.400">
-                  {obj.position}, {obj.company}
+                <Text fontWeight="medium" fontSize="md" color="teal.500">
+                  {obj.position}
+                </Text>
+                <Text fontSize="sm" color="gray.500">
+                  {obj.company}
                 </Text>
               </Box>
             </Stack>

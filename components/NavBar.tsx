@@ -1,5 +1,3 @@
-'use client'
-
 import {
   Box,
   Flex,
@@ -29,14 +27,14 @@ export default function NavBar() {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue('#EDF2F7', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
+        bg={useColorModeValue('teal.50', 'gray.900')}
+        color={useColorModeValue('teal.800', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
+        borderColor={useColorModeValue('gray.200', 'teal.600')}
         align={'center'}>
         <Flex
           flex={{ base: 1, md: 'auto' }}
@@ -44,7 +42,7 @@ export default function NavBar() {
           display={{ base: 'flex', md: 'none' }}>
           <IconButton
             onClick={onToggle}
-            icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />}
+            icon={isOpen ? <CloseIcon w={4} h={4} /> : <HamburgerIcon w={5} h={5} />}
             variant={'ghost'}
             aria-label={'Toggle Navigation'}
           />
@@ -53,7 +51,7 @@ export default function NavBar() {
           <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}>
+            color={useColorModeValue('teal.600', 'white')}>
             DoKtor
           </Text>
 
@@ -67,7 +65,7 @@ export default function NavBar() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
-          <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'https://twitter.com/stackfoss'}>
+          <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'https://twitter.com'}>
             Twitter
           </Button>
           <Button
@@ -77,7 +75,7 @@ export default function NavBar() {
             fontWeight={600}
             color={'white'}
             bg={'teal.400'}
-            href={'/contact'}
+            href={'#BookAppointment'}
             _hover={{
               bg: 'teal.500',
             }}>
@@ -94,9 +92,9 @@ export default function NavBar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue('gray.600', 'gray.200')
-  const linkHoverColor = useColorModeValue('gray.800', 'white')
-  const popoverContentBgColor = useColorModeValue('white', 'gray.800')
+  const linkColor = useColorModeValue('teal.600', 'gray.200')
+  const linkHoverColor = useColorModeValue('teal.800', 'white')
+  const popoverContentBgColor = useColorModeValue('white', 'teal.700')
 
   return (
     <Stack direction={'row'} spacing={4}>
@@ -150,12 +148,12 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
+      _hover={{ bg: useColorModeValue('teal.50', 'gray.900') }}>
       <Stack direction={'row'} align={'center'}>
         <Box>
           <Text
             transition={'all .3s ease'}
-            _groupHover={{ color: 'pink.400' }}
+            _groupHover={{ color: 'teal.400' }}
             fontWeight={500}>
             {label}
           </Text>
@@ -169,7 +167,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
           justify={'flex-end'}
           align={'center'}
           flex={1}>
-          <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={'teal.400'} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </Box>
@@ -178,7 +176,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 
 const MobileNav = () => {
   return (
-    <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
+    <Stack bg={useColorModeValue('white', 'teal.800')} p={4} display={{ md: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -200,7 +198,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         _hover={{
           textDecoration: 'none',
         }}>
-        <Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
+        <Text fontWeight={600} color={useColorModeValue('teal.600', 'white')}>
           {label}
         </Text>
         {children && (
@@ -246,26 +244,32 @@ const NAV_ITEMS: Array<NavItem> = [
     label: 'Home',
     href: '/',
   },
-    {
+  {
     label: 'Services',
     href: '/services',
   },
-    {
+  {
     label: 'About',
     href: '/about',
   },
   {
-    label: 'Contact',
-    href: '/contact',
-  },
-   {
-    label: 'Blog',
-    href: '/blog',
+    label: '|',
   },
   {
     label: 'Calculators',
     href: '/calculator',
   },
+  {
+    label: 'Food',
+    href: '/food',
+  },
+  {
+    label: 'Articles',
+    href: '/articles',
+  },
+  {
+    label: 'Podcasts',
+    href: '/podcast',
+  },
+];
 
-
-]
